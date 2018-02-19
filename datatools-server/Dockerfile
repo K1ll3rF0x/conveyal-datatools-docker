@@ -1,0 +1,29 @@
+FROM openjdk:8-jdk
+
+# Install dependencies
+RUN apt-get update
+RUN apt-get install -y --no-install-recommends maven git
+
+RUN mvn -v
+
+#RUN git clone https://github.com/conveyal/datatools-server.git /opt/datatools-server  #Old, deprecated
+RUN git clone https://github.com/catalogueglobal/datatools-server.git /opt/datatools-server
+
+WORKDIR /opt/datatools-server
+
+RUN mvn dependency:go-offline
+
+VOLUME /root/.m2
+
+
+ADD ./config /config
+
+COPY /config/env.yml /opt/datatools-server/configurations/default/env.yml
+COPY /config/server.yml /opt/datatools-server/configurations/default/server.yml
+
+RUN mvn package -Dmaven.test.skip=true
+
+
+EXPOSE 4000
+
+CMD java -jar "target/dt-$(git describe --always).jar"

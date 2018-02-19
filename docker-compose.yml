@@ -1,0 +1,41 @@
+# docker-compose build && docker-compose up
+
+version: "3"
+
+networks:
+  napote:
+
+services:
+  datatools-ui:
+    container_name: datatools-ui
+    build:
+      context: ./datatools-ui/
+    environment:
+      - DATATOOLS_API_URL=datatools-server/api
+    networks:
+      - napote
+    links:
+      - datatools-server
+    depends_on:
+      - datatools-server
+
+  datatools-server:
+    container_name: datatools-server
+    build: ./datatools-server/
+    environment:
+      - MONGO_DATA_DIR=/data/db
+    networks:
+      - napote
+    links:
+      - datatools-mongodb:mongo
+    depends_on:
+      - datatools-mongodb
+
+  datatools-mongodb:
+    container_name: datatools-mongodb
+    image: mongo:latest
+    networks:
+      - napote
+    ports:
+      - "27017:27017"
+    command: mongod --smallfiles --dbpath /data/db --nojournal --oplogSize 16 --noauth

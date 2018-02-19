@@ -1,0 +1,29 @@
+entries:
+  - lib/main.js:dist/index.js
+  - lib/index.css:dist/index.css
+application:
+  data:
+    gtfs_s3_bucket: bucket-name
+    use_s3_storage: false
+  title: Data Manager
+  logo: http://gtfs-assets-dev.conveyal.com/data_manager.png # defaults to src/main/client/assets/application_logo.png
+  active_project: project-id
+  notifications_enabled: false
+  docs_url: http://docs.example.com
+  changelog_url: https://changelog.example.com
+  support_email: support@example.com
+  date_format: MMM Do YYYY
+modules:
+  enterprise:
+    enabled: false
+  editor:
+    enabled: true
+  user_admin:
+    enabled: true
+  validator:
+    enabled: true
+extensions:
+  transitland:
+    enabled: false
+  transitfeeds:
+    enabled: false
