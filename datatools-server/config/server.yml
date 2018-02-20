@@ -1,6 +1,6 @@
 application:
   assets_bucket: datatools-staging # dist directory
-  public_url: http://localhost:9966
+  public_url: http://localhost:8081
   notifications_enabled: false
   port: 4000
   data:

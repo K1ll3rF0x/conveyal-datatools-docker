@@ -10,8 +10,6 @@ services:
     container_name: datatools-ui
     build:
       context: ./datatools-ui/
-    environment:
-      - DATATOOLS_API_URL=datatools-server/api
     networks:
       - napote
     links:
@@ -39,3 +37,17 @@ services:
     ports:
       - "27017:27017"
     command: mongod --smallfiles --dbpath /data/db --nojournal --oplogSize 16 --noauth
+
+  datatools-nginx:
+    restart: always
+    container_name: datatools-nginx
+    build: ./nginx/
+    networks:
+      - napote
+    links:
+      - datatools-server
+      - datatools-ui
+    extra_hosts:
+      - "dockerhost:${DOCKER_HOST_IP}"
+    ports:
+      - "8081:8081"
