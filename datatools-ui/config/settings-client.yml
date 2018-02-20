@@ -5,7 +5,7 @@ application:
   data:
     gtfs_s3_bucket: bucket-name
     use_s3_storage: false
-  title: Data Manager
+  title: Napote GTFS Editor
   logo: http://gtfs-assets-dev.conveyal.com/data_manager.png # defaults to src/main/client/assets/application_logo.png
   active_project: project-id
   notifications_enabled: false
@@ -24,6 +24,6 @@ modules:
     enabled: true
 extensions:
   transitland:
-    enabled: false
+    enabled: true
   transitfeeds:
-    enabled: false
+    enabled: true
