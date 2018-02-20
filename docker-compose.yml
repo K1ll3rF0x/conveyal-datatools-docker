@@ -10,6 +10,9 @@ services:
     container_name: datatools-ui
     build:
       context: ./datatools-ui/
+    environment:
+      - MAPZEN_TURN_BY_TURN_KEY=${MAPZEN_TURN_BY_TURN_KEY}
+      - MAPBOX_ACCESS_TOKEN=${MAPBOX_ACCESS_TOKEN}
     networks:
       - napote
     links:
@@ -22,6 +25,9 @@ services:
     build: ./datatools-server/
     environment:
       - MONGO_DATA_DIR=/data/db
+      - AUTH0_SECRET=${AUTH0_SECRET}
+      - AUTH0_TOKEN=${AUTH0_TOKEN}
+      - TRANSIFTFEEDS_API_KEY=${TRANSIFTFEEDS_API_KEY}
     networks:
       - napote
     links:
