@@ -1,5 +1,7 @@
 FROM openjdk:8-jdk
 
+ENV VERSION=v2.0.1
+
 # Install dependencies
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends maven git
@@ -7,7 +9,7 @@ RUN apt-get install -y --no-install-recommends maven git
 RUN mvn -v
 
 #RUN git clone https://github.com/conveyal/datatools-server.git /opt/datatools-server  #Old, deprecated
-RUN git clone https://github.com/catalogueglobal/datatools-server.git /opt/datatools-server
+RUN git clone -b ${VERSION} https://github.com/catalogueglobal/datatools-server.git /opt/datatools-server
 
 WORKDIR /opt/datatools-server
 

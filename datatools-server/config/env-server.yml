@@ -1,7 +1,7 @@
 AUTH0_CLIENT_ID: wpWJZpa7RRP1FLKg1m52XG9zMxEye0bR
 AUTH0_DOMAIN: napote-datatools.eu.auth0.com
-AUTH0_SECRET: ${auth0-secret}
-AUTH0_TOKEN: ${auth0-token}
+AUTH0_SECRET: ${AUTH0_SECRET}
+AUTH0_TOKEN: ${AUTH0_TOKEN}
 DISABLE_AUTH: true
 OSM_VEX: http://localhost:1000
 SPARKPOST_KEY: your-sparkpost-key
