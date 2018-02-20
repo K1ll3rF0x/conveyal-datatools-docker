@@ -34,4 +34,4 @@ extensions:
   transitfeeds:
     enabled: true
     api: https://api.transitfeeds.com/v1/getFeeds
-    key: ${TRANSIFTFEEDS_API_KEY}
+    key: ${TRANSITFEEDS_API_KEY}

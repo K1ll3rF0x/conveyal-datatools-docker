@@ -4,7 +4,9 @@ ENV VERSION=v2.0.1
 
 # Install dependencies
 RUN apt-get update
-RUN apt-get install -y --no-install-recommends maven git
+RUN apt-get install -y --no-install-recommends maven git && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN mvn -v
 
