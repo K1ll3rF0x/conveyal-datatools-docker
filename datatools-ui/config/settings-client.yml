@@ -25,5 +25,8 @@ modules:
 extensions:
   transitland:
     enabled: true
+    api: https://transit.land/api/v1/feeds
   transitfeeds:
     enabled: true
+    api: https://api.transitfeeds.com/v1/getFeeds
+    key: $TRANSITFEEDS_API_KEY
