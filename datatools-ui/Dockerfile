@@ -1,19 +1,16 @@
 FROM node:6
 
-ARG DATATOOLS_API_URL=http://localhost:4000/api
-ENV DATATOOLS_API_URL=$DATATOOLS_API_URL
-
 RUN npm i -g serve
 
-#RUN git clone https://github.com/conveyal/datatools-ui.git /opt/datatools-ui # Old, deprecated
 RUN git clone https://github.com/catalogueglobal/datatools-ui.git /opt/datatools-ui
 
 WORKDIR /opt/datatools-ui
 
-ADD ./config /config
+# Add config directory
+ADD ./config/*.yml /config/
 
-COPY /config/env.yml /opt/datatools-ui/configurations/default/env.yml
-COPY /config/settings.yml /opt/datatools-ui/configurations/default/settings.yml
+COPY /config/env-client.yml /opt/datatools-ui/configurations/default/env.yml
+COPY /config/settings-client.yml /opt/datatools-ui/configurations/default/settings.yml
 
 RUN yarn
 
