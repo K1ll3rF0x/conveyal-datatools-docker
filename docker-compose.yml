@@ -28,6 +28,8 @@ services:
       - datatools-mongodb:mongo
     depends_on:
       - datatools-mongodb
+    extra_hosts:
+      - "dockerhost:${DOCKER_HOST_IP}"
 
   datatools-mongodb:
     container_name: datatools-mongodb
